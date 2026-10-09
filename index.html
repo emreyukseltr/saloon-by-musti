@@ -69,23 +69,6 @@
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* Form Elemanları ve Placeholder Ayarları */
-        input {
-            color-scheme: dark;
-        }
-        input::placeholder {
-            color: #9ca3af;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.8rem;
-        }
-        input[type="date"]::-webkit-calendar-picker-indicator,
-        input[type="time"]::-webkit-calendar-picker-indicator {
-            filter: invert(70%) sepia(45%) saturate(400%) hue-rotate(5deg) brightness(95%) contrast(85%);
-            cursor: pointer;
-        }
-
         .service-checkbox { display: none; }
         .service-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -176,7 +159,6 @@
             </a>
         </div>
         
-        <!-- Tam Merkeze Çivilenmiş Aşağı Kaydır Göstergesi -->
         <div class="absolute bottom-10 left-0 right-0 mx-auto flex flex-col items-center justify-center gap-2 opacity-50 animate-bounce pointer-events-none">
             <span class="text-[10px] tracking-widest uppercase text-gold-500 text-center">Aşağı Kaydır</span>
             <div class="w-[1px] h-8 bg-gradient-to-b from-gold-500 to-transparent mx-auto"></div>
@@ -262,16 +244,31 @@
                         <i class="ph ph-calendar-blank"></i> Tarih ve Saat
                     </h3>
 
-                    <!-- iOS Safari "İçi Boş Kutu" Sorununu Çözen Dinamik Input Yapısı -->
+                    <!-- Görünmez Input Katmanı (iOS iOS Olalı Böyle Çözüm Görmedi) -->
                     <div class="flex flex-col sm:flex-row gap-5 mb-10 w-full">
+                        
                         <div class="w-full flex-1">
                             <label class="block text-xs text-gray-400 uppercase tracking-widest mb-2">Tarih</label>
-                            <input type="text" id="bookingDate" placeholder="TARİH SEÇİN" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')" required class="block w-full h-[50px] bg-[#111111] border border-gold-500/30 text-white rounded-md px-4 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
+                            <div class="relative w-full h-[50px] group cursor-pointer">
+                                <div id="dateDisplay" class="absolute inset-0 bg-[#111111] border border-gold-500/30 rounded-md px-4 flex items-center justify-between text-gray-400 font-light text-sm transition-all group-hover:border-gold-500/60 pointer-events-none">
+                                    <span id="dateText">GG.AA.YYYY</span>
+                                    <i class="ph ph-calendar-blank text-gold-500 text-lg"></i>
+                                </div>
+                                <input type="date" id="bookingDate" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateDateDisplay(this)">
+                            </div>
                         </div>
+
                         <div class="w-full flex-1">
                             <label class="block text-xs text-gray-400 uppercase tracking-widest mb-2">Saat</label>
-                            <input type="text" id="bookingTime" placeholder="SAAT SEÇİN" onfocus="(this.type='time')" onblur="(this.value == '' ? this.type='text' : this.type='time')" required class="block w-full h-[50px] bg-[#111111] border border-gold-500/30 text-white rounded-md px-4 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
+                            <div class="relative w-full h-[50px] group cursor-pointer">
+                                <div id="timeDisplay" class="absolute inset-0 bg-[#111111] border border-gold-500/30 rounded-md px-4 flex items-center justify-between text-gray-400 font-light text-sm transition-all group-hover:border-gold-500/60 pointer-events-none">
+                                    <span id="timeText">--:--</span>
+                                    <i class="ph ph-clock text-gold-500 text-lg"></i>
+                                </div>
+                                <input type="time" id="bookingTime" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateTimeDisplay(this)">
+                            </div>
                         </div>
+
                     </div>
 
                     <div class="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-white/5 gap-6">
@@ -351,7 +348,6 @@
         let selectedTotal = 0;
         const PHONE_NUMBER = "905079672138";
 
-        // Animasyon ve Scroll Fix (Sayfa tamamen açılana kadar kaymayı kilitler)
         window.addEventListener('load', () => {
             window.scrollTo(0, 0);
             
@@ -359,7 +355,6 @@
                 const splash = document.getElementById('splash-screen');
                 if (splash) splash.classList.add('fade-out');
                 
-                // Giriş animasyonu bittikten sonra sayfanın kilidini aç ve animasyonları başlat
                 document.getElementById('main-body').classList.remove('overflow-hidden');
                 revealOnScroll();
             }, 1800);
@@ -407,6 +402,35 @@
                 display.style.transform = 'scale(1)';
                 display.style.color = 'white';
             }, 200);
+        }
+
+        // Görünmez Katman Güncelleme Fonksiyonları
+        function updateDateDisplay(input) {
+            const display = document.getElementById('dateDisplay');
+            const text = document.getElementById('dateText');
+            if (input.value) {
+                text.innerText = input.value.split('-').reverse().join('.');
+                display.classList.remove('text-gray-400', 'border-gold-500/30');
+                display.classList.add('text-white', 'border-gold-500');
+            } else {
+                text.innerText = 'GG.AA.YYYY';
+                display.classList.add('text-gray-400', 'border-gold-500/30');
+                display.classList.remove('text-white', 'border-gold-500');
+            }
+        }
+
+        function updateTimeDisplay(input) {
+            const display = document.getElementById('timeDisplay');
+            const text = document.getElementById('timeText');
+            if (input.value) {
+                text.innerText = input.value;
+                display.classList.remove('text-gray-400', 'border-gold-500/30');
+                display.classList.add('text-white', 'border-gold-500');
+            } else {
+                text.innerText = '--:--';
+                display.classList.add('text-gray-400', 'border-gold-500/30');
+                display.classList.remove('text-white', 'border-gold-500');
+            }
         }
 
         function handleBooking() {
