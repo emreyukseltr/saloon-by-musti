@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saloon By Musti - Randevu Al</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            border: 1px solid #ff8c00;
+        }
+        h1 {
+            text-align: center;
+            color: #ff8c00;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        h3 {
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        .service-list {
+            margin-bottom: 20px;
+        }
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #333;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .service-item:hover {
+            border-color: #ff8c00;
+            background: #3a3a3a;
+        }
+        .service-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .service-title {
+            font-weight: bold;
+            font-size: 16px;
+            color: #fff;
+        }
+        .service-duration {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 3px;
+        }
+        .service-price {
+            color: #ff8c00;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.4);
+            accent-color: #ff8c00;
+            cursor: pointer;
+        }
+        .datetime-group {
+            margin-bottom: 25px;
+        }
+        label.section-title {
+            display: block;
+            margin-bottom: 8px;
+            color: #ff8c00;
+            font-weight: bold;
+        }
+        input[type="date"], input[type="time"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            background: #333;
+            border: 1px solid #555;
+            color: #fff;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color-scheme: dark;
+            font-size: 15px;
+        }
+        input[type="date"]:focus, input[type="time"]:focus {
+            outline: none;
+            border-color: #ff8c00;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background-color: #25D366; /* WhatsApp Yeşili */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .btn-submit:hover {
+            background-color: #1ebd5a;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SALOON By Musti</h1>
+    <h3>Erkek Kuaförü | Hızlı Randevu Sistemi</h3>
+
+    <form id="randevuForm">
+        <div class="service-list">
+            <label class="section-title">Hizmet Seçin:</label>
+            
+            <label class="service-item">
+                <div class="service-info">
+                    <span class="service-title">Saç</span>
+                    <span class="service-duration">30 dk</span>
+                </div>
+                <div class="service-price">400 TL <input type="checkbox" name="service" value="Saç (400 TL)" data-price="400"></div>
+            </label>
+
+            <label class="service-item">
+                <div class="service-info">
+                    <span class="service-title">Sakal</span>
+                    <span class="service-duration">15 dk</span>
+                </div>
+                <div class="service-price">200 TL <input type="checkbox" name="service" value="Sakal (200 TL)" data-price="200"></div>
+            </label>
+
+            <label class="service-item">
+                <div class="service-info">
+                    <span class="service-title">Saç & Sakal Tıraşı</span>
+                    <span class="service-duration">45 dk</span>
+                </div>
+                <div class="service-price">600 TL <input type="checkbox" name="service" value="Saç & Sakal Tıraşı (600 TL)" data-price="600"></div>
+            </label>
+
+            <label class="service-item">
+                <div class="service-info">
+                    <span class="service-title">Saç ve Cilt Bakımı</span>
+                    <span class="service-duration">30 dk</span>
+                </div>
+                <div class="service-price">300 TL <input type="checkbox" name="service" value="Saç ve Cilt Bakımı (300 TL)" data-price="300"></div>
+            </label>
+
+            <label class="service-item">
+                <div class="service-info">
+                    <span class="service-title">Saç, Sakal, Saç & Cilt Bakımı</span>
+                    <span class="service-duration">1 Saat (Bakımlar Ücretsiz)</span>
+                </div>
+                <div class="service-price">600 TL <input type="checkbox" name="service" value="Saç, Sakal ve Bakımlar (600 TL)" data-price="600"></div>
+            </label>
+
+            <label class="service-item">
+                <div class="service-info">
+                    <span class="service-title">Yıkama & Fön</span>
+                    <span class="service-duration">15 dk</span>
+                </div>
+                <div class="service-price">200 TL <input type="checkbox" name="service" value="Yıkama & Fön (200 TL)" data-price="200"></div>
+            </label>
+        </div>
+
+        <div class="datetime-group">
+            <label class="section-title" for="date">Tarih ve Saat Seçin:</label>
+            <input type="date" id="date" required>
+            <input type="time" id="time" required>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="sendWhatsApp()">WhatsApp İle Randevu Oluştur</button>
+    </form>
+    
+    <div class="footer">
+        📍 Zafer Mahallesi, Zübeyde Hanım Caddesi No: 17/A<br>
+        📞 0507 967 21 38
+    </div>
+</div>
+
+<script>
+    function sendWhatsApp() {
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const checkboxes = document.querySelectorAll('input[name="service"]:checked');
+        
+        if (checkboxes.length === 0) {
+            alert("Lütfen randevu için en az bir işlem seçin.");
+            return;
+        }
+        if (!date || !time) {
+            alert("Lütfen gelmek istediğiniz tarih ve saati seçin.");
+            return;
+        }
+
+        let selectedServices = [];
+        let totalPrice = 0;
+        
+        checkboxes.forEach((cb) => {
+            selectedServices.push(cb.value);
+            totalPrice += parseInt(cb.getAttribute('data-price'));
+        });
+
+        // Tarihi TR formatına (Gün.Ay.Yıl) çevir
+        const formattedDate = date.split('-').reverse().join('.');
+        
+        // WhatsApp Mesaj Taslağı
+        let message = `Mustafa Bey bu şekilde;\n\n📅 Tarih: ${formattedDate}\n⏰ Saat: ${time}\n\n✂️ Seçilen İşlemler:\n- ${selectedServices.join('\n- ')}\n\n💰 Toplam Tutar: ${totalPrice} TL\n\nRandevumu onaylıyor musunuz?`;
+        
+        // Mesajı URL formatına çevir ve numaraya gönder
+        const encodedMessage = encodeURIComponent(message);
+        const phoneNumber = "905079672138"; 
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        // Yeni sekmede WhatsApp'ı aç
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
+</body>
+</html>
