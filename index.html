@@ -69,27 +69,21 @@
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* iOS Safari Taşma Fixi (Tamamen Ezen Kod) */
-        input[type="date"], input[type="time"] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
+        /* Form Elemanları ve Placeholder Ayarları */
+        input {
             color-scheme: dark;
-            color: #ffffff;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-            display: block;
-            margin: 0;
+        }
+        input::placeholder {
+            color: #9ca3af;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
         }
         input[type="date"]::-webkit-calendar-picker-indicator,
         input[type="time"]::-webkit-calendar-picker-indicator {
             filter: invert(70%) sepia(45%) saturate(400%) hue-rotate(5deg) brightness(95%) contrast(85%);
             cursor: pointer;
-        }
-        input[type="date"]::-webkit-datetime-edit,
-        input[type="time"]::-webkit-datetime-edit {
-            color: #ffffff;
         }
 
         .service-checkbox { display: none; }
@@ -131,7 +125,7 @@
         #toast.show { transform: translateY(0); opacity: 1; }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-gold-500 selection:text-black">
+<body id="main-body" class="font-sans antialiased selection:bg-gold-500 selection:text-black overflow-hidden">
 
     <div id="splash-screen" class="fixed inset-0 bg-deepblack z-[10000] flex flex-col justify-center items-center">
         <div class="border border-gold-500/30 p-10 md:p-16 rounded-sm text-center bg-black/60 shadow-[inset_0_0_50px_rgba(212,175,55,0.05)] relative">
@@ -182,8 +176,8 @@
             </a>
         </div>
         
-        <!-- Tüm Tarayıcılarda Merkeze Çivileyen Aşağı Kaydır Göstergesi -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center gap-2 opacity-50 animate-bounce whitespace-nowrap">
+        <!-- Tam Merkeze Çivilenmiş Aşağı Kaydır Göstergesi -->
+        <div class="absolute bottom-10 left-0 right-0 mx-auto flex flex-col items-center justify-center gap-2 opacity-50 animate-bounce pointer-events-none">
             <span class="text-[10px] tracking-widest uppercase text-gold-500 text-center">Aşağı Kaydır</span>
             <div class="w-[1px] h-8 bg-gradient-to-b from-gold-500 to-transparent mx-auto"></div>
         </div>
@@ -268,15 +262,15 @@
                         <i class="ph ph-calendar-blank"></i> Tarih ve Saat
                     </h3>
 
-                    <!-- iOS Safari Genişlik Problemini Çözen Yeni Flex Yapısı -->
-                    <div class="flex flex-col sm:flex-row gap-5 mb-10 w-full overflow-hidden">
-                        <div class="w-full flex-1 min-w-0">
+                    <!-- iOS Safari "İçi Boş Kutu" Sorununu Çözen Dinamik Input Yapısı -->
+                    <div class="flex flex-col sm:flex-row gap-5 mb-10 w-full">
+                        <div class="w-full flex-1">
                             <label class="block text-xs text-gray-400 uppercase tracking-widest mb-2">Tarih</label>
-                            <input type="date" id="bookingDate" required class="w-full bg-[#111111] border border-gold-500/30 text-white rounded-md px-3 py-3 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
+                            <input type="text" id="bookingDate" placeholder="TARİH SEÇİN" onfocus="(this.type='date')" onblur="(this.value == '' ? this.type='text' : this.type='date')" required class="block w-full h-[50px] bg-[#111111] border border-gold-500/30 text-white rounded-md px-4 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
                         </div>
-                        <div class="w-full flex-1 min-w-0">
+                        <div class="w-full flex-1">
                             <label class="block text-xs text-gray-400 uppercase tracking-widest mb-2">Saat</label>
-                            <input type="time" id="bookingTime" required class="w-full bg-[#111111] border border-gold-500/30 text-white rounded-md px-3 py-3 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
+                            <input type="text" id="bookingTime" placeholder="SAAT SEÇİN" onfocus="(this.type='time')" onblur="(this.value == '' ? this.type='text' : this.type='time')" required class="block w-full h-[50px] bg-[#111111] border border-gold-500/30 text-white rounded-md px-4 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
                         </div>
                     </div>
 
@@ -344,7 +338,6 @@
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
-        window.scrollTo(0, 0);
 
         const services = [
             { id: 's1', name: "Saç Kesimi", duration: "30 dk", price: 400 },
@@ -358,12 +351,17 @@
         let selectedTotal = 0;
         const PHONE_NUMBER = "905079672138";
 
+        // Animasyon ve Scroll Fix (Sayfa tamamen açılana kadar kaymayı kilitler)
         window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+            
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
-                if (splash) {
-                    splash.classList.add('fade-out');
-                }
+                if (splash) splash.classList.add('fade-out');
+                
+                // Giriş animasyonu bittikten sonra sayfanın kilidini aç ve animasyonları başlat
+                document.getElementById('main-body').classList.remove('overflow-hidden');
+                revealOnScroll();
             }, 1800);
         });
 
@@ -467,7 +465,6 @@
         }
 
         window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
         
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('bookingDate').setAttribute('min', today);
