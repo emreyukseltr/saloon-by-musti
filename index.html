@@ -69,13 +69,18 @@
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* iOS Safari Taşma Fixi ve Form Renkleri */
+        /* iOS Safari Taşma Fixi (Tamamen Ezen Kod) */
         input[type="date"], input[type="time"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
             color-scheme: dark;
             color: #ffffff;
             width: 100%;
-            max-width: 100%; /* Safari'nin kendi genişliğini dayatmasını engeller */
-            box-sizing: border-box; /* Padding'in kutuyu büyütmesini engeller */
+            max-width: 100%;
+            box-sizing: border-box;
+            display: block;
+            margin: 0;
         }
         input[type="date"]::-webkit-calendar-picker-indicator,
         input[type="time"]::-webkit-calendar-picker-indicator {
@@ -177,7 +182,8 @@
             </a>
         </div>
         
-        <div class="absolute bottom-10 left-0 w-full flex flex-col items-center justify-center gap-2 opacity-50 animate-bounce">
+        <!-- Tüm Tarayıcılarda Merkeze Çivileyen Aşağı Kaydır Göstergesi -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center gap-2 opacity-50 animate-bounce whitespace-nowrap">
             <span class="text-[10px] tracking-widest uppercase text-gold-500 text-center">Aşağı Kaydır</span>
             <div class="w-[1px] h-8 bg-gradient-to-b from-gold-500 to-transparent mx-auto"></div>
         </div>
@@ -262,14 +268,15 @@
                         <i class="ph ph-calendar-blank"></i> Tarih ve Saat
                     </h3>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 w-full">
-                        <div class="w-full min-w-0">
+                    <!-- iOS Safari Genişlik Problemini Çözen Yeni Flex Yapısı -->
+                    <div class="flex flex-col sm:flex-row gap-5 mb-10 w-full overflow-hidden">
+                        <div class="w-full flex-1 min-w-0">
                             <label class="block text-xs text-gray-400 uppercase tracking-widest mb-2">Tarih</label>
-                            <input type="date" id="bookingDate" required class="block w-full max-w-full box-border bg-[#111111] border border-gold-500/30 text-white rounded-md px-4 py-3 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
+                            <input type="date" id="bookingDate" required class="w-full bg-[#111111] border border-gold-500/30 text-white rounded-md px-3 py-3 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
                         </div>
-                        <div class="w-full min-w-0">
+                        <div class="w-full flex-1 min-w-0">
                             <label class="block text-xs text-gray-400 uppercase tracking-widest mb-2">Saat</label>
-                            <input type="time" id="bookingTime" required class="block w-full max-w-full box-border bg-[#111111] border border-gold-500/30 text-white rounded-md px-4 py-3 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
+                            <input type="time" id="bookingTime" required class="w-full bg-[#111111] border border-gold-500/30 text-white rounded-md px-3 py-3 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors font-light">
                         </div>
                     </div>
 
