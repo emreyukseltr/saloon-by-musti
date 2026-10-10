@@ -151,42 +151,44 @@
                 <div class="w-12 h-[1px] bg-gold-500 mt-6 opacity-60"></div>
             </div>
 
+            <!-- Galeri Resimleri -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <!-- Resim 1 -->
                 <div class="gallery-img-container relative h-80 rounded-sm bg-darkgray reveal">
                     <img src="salon-1.jpeg" onerror="this.src='https://placehold.co/600x800/111/D4AF37?text=Saloon+By+Musti'" alt="Saloon Interior" class="gallery-img w-full h-full object-cover">
                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 flex items-end p-6 border border-gold-500/0 hover:border-gold-500/50">
                         <span class="font-serif text-gold-500 text-lg">VIP Atmosfer</span>
                     </div>
                 </div>
-                
+                <!-- Resim 2 -->
                 <div class="gallery-img-container relative h-80 rounded-sm bg-darkgray reveal" style="transition-delay: 100ms;">
                     <img src="kesim-1.jpeg" onerror="this.src='https://placehold.co/600x800/111/D4AF37?text=Kesim+Tasarim'" alt="Haircut Style" class="gallery-img w-full h-full object-cover">
                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 flex items-end p-6 border border-gold-500/0 hover:border-gold-500/50">
                         <span class="font-serif text-gold-500 text-lg">Özel Kesim Teknikleri</span>
                     </div>
                 </div>
-
+                <!-- Resim 3 -->
                 <div class="gallery-img-container relative h-80 rounded-sm bg-darkgray reveal" style="transition-delay: 200ms;">
                     <img src="salon-2.jpeg" onerror="this.src='https://placehold.co/600x800/111/D4AF37?text=Tasarim+Detaylari'" alt="Salon Details" class="gallery-img w-full h-full object-cover">
                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 flex items-end p-6 border border-gold-500/0 hover:border-gold-500/50">
                         <span class="font-serif text-gold-500 text-lg">Premium Detaylar</span>
                     </div>
                 </div>
-
+                <!-- Resim 4 -->
                 <div class="gallery-img-container relative h-80 rounded-sm bg-darkgray reveal">
                     <img src="kesim-2.jpeg" onerror="this.src='https://placehold.co/600x800/111/D4AF37?text=Tarzini+Yansit'" alt="Haircut Style 2" class="gallery-img w-full h-full object-cover">
                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 flex items-end p-6 border border-gold-500/0 hover:border-gold-500/50">
                         <span class="font-serif text-gold-500 text-lg">Kişisel İmaj</span>
                     </div>
                 </div>
-
+                <!-- Resim 5 -->
                 <div class="gallery-img-container relative h-80 rounded-sm bg-darkgray reveal" style="transition-delay: 100ms;">
                     <img src="salon-3.jpeg" onerror="this.src='https://placehold.co/600x800/111/D4AF37?text=Premium+Urunler'" alt="Salon Products" class="gallery-img w-full h-full object-cover">
                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 flex items-end p-6 border border-gold-500/0 hover:border-gold-500/50">
                         <span class="font-serif text-gold-500 text-lg">Profesyonel Bakım</span>
                     </div>
                 </div>
-
+                <!-- Resim 6 -->
                 <div class="gallery-img-container relative h-80 rounded-sm bg-darkgray reveal" style="transition-delay: 200ms;">
                     <img src="salon-4.jpeg" onerror="this.src='https://placehold.co/600x800/111/D4AF37?text=Aydin+VIP+Kuafor'" alt="Salon Overview" class="gallery-img w-full h-full object-cover">
                     <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 flex items-end p-6 border border-gold-500/0 hover:border-gold-500/50">
@@ -197,26 +199,96 @@
         </div>
     </section>
 
-    <!-- REZERVASYON ALANI -->
+    <!-- HİZMETLER, FİYAT LİSTESİ VE REZERVASYON ALANI -->
     <section id="rezervasyon" class="py-24 relative overflow-hidden bg-darkgray border-t border-b border-gold-500/10">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[30rem] bg-gold-500/5 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div class="max-w-5xl mx-auto px-6 relative z-10">
+            
             <div class="text-center mb-12 reveal">
-                <span class="text-gold-500 text-xs tracking-[0.3em] uppercase mb-2 block">Randevu & Hizmetler</span>
-                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mb-4">Otomatik Randevu Sistemi</h2>
-                <p class="text-gray-400 text-sm font-light">Lütfen aşağıdaki takvimden size uygun gün ve saati seçerek, işlemlerinizi anında onaylatın.</p>
+                <span class="text-gold-500 text-xs tracking-[0.3em] uppercase mb-2 block">VIP İşlemler</span>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mb-4">Fiyat Listesi & Randevu</h2>
+                <p class="text-gray-400 text-sm font-light">Önce fiyatlarımızı inceleyin, ardından aşağıdaki takvimden size uygun gün ve saati seçerek randevunuzu oluşturun.</p>
+            </div>
+
+            <!-- STATİK FİYAT VİTRİNİ -->
+            <div class="mb-12 reveal">
+                <h3 class="text-lg font-serif text-gold-500 mb-6 flex items-center justify-center gap-2 border-b border-gold-500/20 pb-3">
+                    <i class="ph ph-scissors"></i> Hizmetlerimiz
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Fiyat Kartı 1 -->
+                    <div class="bg-surface p-5 rounded-md flex justify-between items-center border border-gold-500/10 hover:border-gold-500/30 transition-colors">
+                        <div class="flex flex-col">
+                            <span class="text-white font-medium flex items-center gap-2">Saç Kesimi</span>
+                            <span class="text-gray-500 text-xs mt-1"><i class="ph ph-clock mr-1"></i>30 dk</span>
+                        </div>
+                        <div class="text-gold-500 font-serif font-bold text-lg">400 ₺</div>
+                    </div>
+
+                    <!-- Fiyat Kartı 2 -->
+                    <div class="bg-surface p-5 rounded-md flex justify-between items-center border border-gold-500/10 hover:border-gold-500/30 transition-colors">
+                        <div class="flex flex-col">
+                            <span class="text-white font-medium flex items-center gap-2">Sakal Kesimi</span>
+                            <span class="text-gray-500 text-xs mt-1"><i class="ph ph-clock mr-1"></i>15 dk</span>
+                        </div>
+                        <div class="text-gold-500 font-serif font-bold text-lg">200 ₺</div>
+                    </div>
+
+                    <!-- Fiyat Kartı 3 -->
+                    <div class="bg-surface p-5 rounded-md flex justify-between items-center border border-gold-500/10 hover:border-gold-500/30 transition-colors">
+                        <div class="flex flex-col">
+                            <span class="text-white font-medium flex items-center gap-2">Saç & Sakal Tıraşı</span>
+                            <span class="text-gray-500 text-xs mt-1"><i class="ph ph-clock mr-1"></i>45 dk</span>
+                        </div>
+                        <div class="text-gold-500 font-serif font-bold text-lg">600 ₺</div>
+                    </div>
+
+                    <!-- Fiyat Kartı 4 -->
+                    <div class="bg-surface p-5 rounded-md flex justify-between items-center border border-gold-500/10 hover:border-gold-500/30 transition-colors">
+                        <div class="flex flex-col">
+                            <span class="text-white font-medium flex items-center gap-2">Saç ve Cilt Bakımı</span>
+                            <span class="text-gray-500 text-xs mt-1"><i class="ph ph-clock mr-1"></i>30 dk</span>
+                        </div>
+                        <div class="text-gold-500 font-serif font-bold text-lg">300 ₺</div>
+                    </div>
+
+                    <!-- Fiyat Kartı 5 -->
+                    <div class="bg-surface p-5 rounded-md flex justify-between items-center border border-gold-500/30 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+                        <div class="flex flex-col">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                Full Paket
+                                <span class="bg-gold-500/20 text-gold-500 text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">Öneri</span>
+                            </span>
+                            <span class="text-gray-500 text-xs mt-1"><i class="ph ph-clock mr-1"></i>1 Saat</span>
+                        </div>
+                        <div class="text-gold-500 font-serif font-bold text-lg">600 ₺</div>
+                    </div>
+
+                    <!-- Fiyat Kartı 6 -->
+                    <div class="bg-surface p-5 rounded-md flex justify-between items-center border border-gold-500/10 hover:border-gold-500/30 transition-colors">
+                        <div class="flex flex-col">
+                            <span class="text-white font-medium flex items-center gap-2">Yıkama & Fön</span>
+                            <span class="text-gray-500 text-xs mt-1"><i class="ph ph-clock mr-1"></i>15 dk</span>
+                        </div>
+                        <div class="text-gold-500 font-serif font-bold text-lg">200 ₺</div>
+                    </div>
+                </div>
             </div>
 
             <!-- CAM PANEL İÇİNDE CALENDLY GÖMÜLÜ ALAN -->
             <div class="glass-panel p-2 sm:p-4 rounded-xl reveal overflow-hidden">
+                <h3 class="text-lg font-serif text-gold-500 mb-2 mt-2 flex items-center justify-center gap-2">
+                    <i class="ph ph-calendar-check"></i> Randevunuzu Seçin
+                </h3>
                 
                 <!-- Calendly inline widget begin -->
                 <div class="calendly-inline-widget" data-url="https://calendly.com/saloonbymusti/30min?background_color=000000&text_color=ffffff&primary_color=d4af37" style="min-width:320px;height:700px;"></div>
                 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                 <!-- Calendly inline widget end -->
-
             </div>
+
         </div>
     </section>
 
